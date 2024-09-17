@@ -57,7 +57,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* display: none; */ /* Removido para que o vídeo seja exibido inicialmente */
         }
 
         .play-button {
@@ -67,8 +66,6 @@
             transform: translate(-50%, -50%); /* Mantém o botão centrado */
             background: rgba(0, 0, 0, 0.5);
             border: none;
-            color: white;
-            font-size: 24px;
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -76,40 +73,47 @@
             align-items: center; /* Centraliza verticalmente */
             justify-content: center; /* Centraliza horizontalmente */
             cursor: pointer;
-            transition: all 0.5s ease;
             overflow: hidden; /* Garante que os elementos internos não saiam do botão */
         }
-        
-        .play-button::before {
-            content: '\25B6'; /* Triângulo para o ícone de play */
-            font-size: 35px; /* Tamanho aumentado */
-            transition: opacity 0.3s ease;
+
+        /* Estilo do triângulo */
+        .play-icon {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent; /* Aumenta o tamanho do triângulo */
+            border-right: 15px solid transparent; /* Aumenta o tamanho do triângulo */
+            border-bottom: 25px solid #fff; /* Cor e tamanho do triângulo, ajustado para apontar para baixo */
+            top: 50%; /* Centraliza verticalmente */
+            left: 55%; /* Centraliza horizontalmente */
+            transform: translate(-50%, -50%) rotate(90deg); /* Gira o triângulo 90 graus */
         }
 
-        .play-button.playing::before {
-            content: ''; /* Remove o ícone de play */
+        /* Estado quando o vídeo está sendo reproduzido */
+        .play-button.playing .play-icon {
+            display: none; /* Esconde o triângulo quando o botão está na classe 'playing' */
         }
 
-        .play-button.playing::after {
-            content: ''; /* Cria o primeiro retângulo de pause */
-            display: block;
-            width: 8px; /* Diminuído o tamanho dos retângulos de pause */
-            height: 30px; /* Diminuído o tamanho dos retângulos de pause */
-            background: white;
+        .pause-icon {
+            display: none; /* Inicialmente escondido */
             position: absolute;
             top: 50%;
-            left: 35%; /* Ajustado para aproximar os retângulos */
-            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 30px;
+            background: white;
+            transform: translateY(-50%); /* Centraliza verticalmente */
         }
 
-        .play-button.playing span {
-            position: absolute;
-            top: 50%;
-            left: 65%; /* Ajustado para aproximar os retângulos */
-            transform: translate(-50%, -50%);
-            width: 8px; /* Diminuído o tamanho dos retângulos de pause */
-            height: 30px; /* Diminuído o tamanho dos retângulos de pause */
-            background: white;
+        .play-button.playing .pause-icon {
+            display: block; /* Mostra os retângulos de pause quando o botão está na classe 'playing' */
+        }
+
+        .play-button.playing .pause-icon:nth-child(2) {
+            left: 35%; /* Ajusta a posição dos retângulos de pause */
+        }
+
+        .play-button.playing .pause-icon:nth-child(3) {
+            left: 65%; /* Ajusta a posição dos retângulos de pause */
         }
 
         .description {
@@ -169,7 +173,9 @@
                     Seu navegador não suporta o vídeo.
                 </video>
                 <button id="playButton" class="play-button">
-                    <span></span>
+                    <div class="play-icon"></div> <!-- Triângulo para o ícone de play -->
+                    <div class="pause-icon"></div> <!-- Primeiro retângulo de pause -->
+                    <div class="pause-icon"></div> <!-- Segundo retângulo de pause -->
                 </button>
             </div>
         </div>
