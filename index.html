@@ -81,15 +81,9 @@
         }
         
         .play-button::before {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-top: 20px solid #fff; /* Cor do triângulo */
-            top: 50%; /* Ajuste a posição vertical do triângulo */
-            transform: translateY(-50%); /* Centraliza verticalmente o triângulo */
+            content: '\25B6'; /* Triângulo para o ícone de play */
+            font-size: 35px; /* Tamanho aumentado */
+            transition: opacity 0.3s ease;
         }
 
         .play-button.playing::before {
