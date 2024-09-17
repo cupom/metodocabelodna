@@ -63,25 +63,28 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); /* Mantém o botão centrado */
             background: rgba(0, 0, 0, 0.5);
             border: none;
             color: white;
-            font-size: 24px; /* Diminuído o tamanho da fonte */
-            width: 60px; /* Diminuído o tamanho do botão */
-            height: 60px; /* Diminuído o tamanho do botão */
+            font-size: 24px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-items: center; /* Centraliza verticalmente */
+            justify-content: center; /* Centraliza horizontalmente */
             cursor: pointer;
-            transition: all 0.5s ease; /* Animação suave */
+            transition: all 0.5s ease;
         }
-
+        
         .play-button::before {
             content: '\25B6'; /* Triângulo para o ícone de play */
-            font-size: 35px; /* Diminuído o tamanho do ícone */
+            font-size: 35px; /* Tamanho aumentado */
             transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center; /* Centraliza verticalmente o triângulo */
+            justify-content: center; /* Centraliza horizontalmente o triângulo */
         }
 
         .play-button.playing::before {
