@@ -68,6 +68,7 @@
             background: rgba(0, 0, 0, 0.5);
             border: none;
             color: white;
+            font-size: 24px;
             width: 60px;
             height: 60px;
             border-radius: 50%;
@@ -97,14 +98,14 @@
             background: white;
             position: absolute;
             top: 50%;
-            left: 25%; /* Ajustado para centralizar o primeiro retângulo */
+            left: 30%; /* Ajustado para centralizar o primeiro retângulo */
             transform: translate(-50%, -50%);
         }
 
         .play-button.playing span {
             position: absolute;
             top: 50%;
-            left: 75%; /* Ajustado para centralizar o segundo retângulo */
+            left: 70%; /* Ajustado para centralizar o segundo retângulo */
             transform: translate(-50%, -50%);
             width: 8px; /* Diminuído o tamanho dos retângulos de pause */
             height: 30px; /* Diminuído o tamanho dos retângulos de pause */
@@ -150,21 +151,6 @@
             .description {
                 margin-top: -7px;
                 font-size: 14px;
-            }
-
-            .play-button {
-                width: 50px;
-                height: 50px;
-            }
-
-            .play-button::before {
-                font-size: 30px; /* Ajustado para dispositivos móveis */
-            }
-
-            .play-button.playing::after,
-            .play-button.playing span {
-                width: 6px; /* Ajustado para dispositivos móveis */
-                height: 25px; /* Ajustado para dispositivos móveis */
             }
         }
     </style>
