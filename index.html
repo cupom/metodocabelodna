@@ -37,7 +37,7 @@
             height: 0;
             overflow: hidden;
             max-width: 100%;
-            background-color: transparent; /* Torna o retângulo completamente transparente */
+            background-color: transparent;
             margin-bottom: 20px;
         }
 
@@ -47,7 +47,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: transparent; /* Remove background color */
+            background-color: transparent;
         }
 
         .background-video {
@@ -63,57 +63,48 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%); /* Mantém o botão centrado */
-            background: rgba(0, 0, 0, 0.5);
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.5);
             border: none;
-            width: 60px;
-            height: 60px;
             border-radius: 50%;
-            display: flex;
-            align-items: center; /* Centraliza verticalmente */
-            justify-content: center; /* Centraliza horizontalmente */
+            width: 60px; /* Tamanho do botão */
+            height: 60px; /* Tamanho do botão */
             cursor: pointer;
-            overflow: hidden; /* Garante que os elementos internos não saiam do botão */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Estilo do triângulo */
-        .play-icon {
-            position: absolute;
+        .play-button::before {
+            content: '';
+            display: block;
             width: 0;
             height: 0;
-            border-left: 15px solid transparent; /* Aumenta o tamanho do triângulo */
-            border-right: 15px solid transparent; /* Aumenta o tamanho do triângulo */
-            border-bottom: 25px solid #fff; /* Cor e tamanho do triângulo, ajustado para apontar para baixo */
-            top: 50%; /* Centraliza verticalmente */
-            left: 55%; /* Centraliza horizontalmente */
-            transform: translate(-50%, -50%) rotate(90deg); /* Gira o triângulo 90 graus */
+            border-style: solid;
+            border-width: 14px 0 14px 20px; /* Triângulo para o play */
+            border-color: transparent transparent transparent white;
         }
 
-        /* Estado quando o vídeo está sendo reproduzido */
-        .play-button.playing .play-icon {
+        .play-button.playing::before {
             display: none; /* Esconde o triângulo quando o botão está na classe 'playing' */
-        }
-
-        .pause-icon {
-            display: none; /* Inicialmente escondido */
-            position: absolute;
-            top: 50%;
-            width: 8px;
-            height: 30px;
-            background: white;
-            transform: translateY(-50%); /* Centraliza verticalmente */
         }
 
         .play-button.playing .pause-icon {
             display: block; /* Mostra os retângulos de pause quando o botão está na classe 'playing' */
+            position: absolute;
+            width: 7px;
+            height: 30px; /* Altura dos retângulos de pause */
+            background-color: white;
+            top: 50%;
+            transform: translateY(-50%); /* Centraliza verticalmente */
         }
 
-        .play-button.playing .pause-icon:nth-child(2) {
-            left: 35%; /* Ajusta a posição dos retângulos de pause */
+        .play-button.playing .pause-icon:nth-of-type(1) {
+            left: calc(50% - 11px); /* Ajusta a posição do primeiro retângulo para o centro */
         }
 
-        .play-button.playing .pause-icon:nth-child(3) {
-            left: 65%; /* Ajusta a posição dos retângulos de pause */
+        .play-button.playing .pause-icon:nth-of-type(2) {
+            left: calc(50% + 5px); /* Ajusta a posição do segundo retângulo para o centro */
         }
 
         .description {
@@ -168,12 +159,11 @@
         <div class="rectangle-container">
             <div class="rectangle">
                 <!-- Vídeo como fundo -->
-                <video id="backgroundVideo" muted loop playsinline class="background-video">
+                <video id="backgroundVideo" muted loop playsinline class="background-video" poster="capa.jpg">
                     <source src="video1.mp4" type="video/mp4">
                     Seu navegador não suporta o vídeo.
                 </video>
                 <button id="playButton" class="play-button">
-                    <div class="play-icon"></div> <!-- Triângulo para o ícone de play -->
                     <div class="pause-icon"></div> <!-- Primeiro retângulo de pause -->
                     <div class="pause-icon"></div> <!-- Segundo retângulo de pause -->
                 </button>
@@ -192,10 +182,19 @@
         const video = document.getElementById('backgroundVideo');
 
         playButton.addEventListener('click', () => {
-            playButton.classList.add('playing');
-            video.style.display = 'block';
-            video.play();
-            setTimeout(() => playButton.style.display = 'none', 500); // Espera a animação terminar
+            if (video.paused) {
+                video.play();
+                playButton.classList.add('playing');
+
+                // Mostrar os retângulos por 1 segundo antes de esconder
+                setTimeout(() => {
+                    playButton.style.display = 'none'; // Esconde o botão após 1 segundo
+                }, 1000);
+            } else {
+                video.pause();
+                playButton.classList.remove('playing');
+                playButton.style.display = 'block'; // Mostra o botão se o vídeo for pausado
+            }
         });
     </script>
 
