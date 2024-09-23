@@ -182,6 +182,174 @@
         .bloco p b {
             color: #aaaaaa;
         }
+
+        .container-prod-unique {
+            display: none;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: px;
+        }
+
+        .container-image-unique {
+            position: relative;
+        }
+
+        .product-image-unique {
+            width: 100%;
+            height: auto;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .product-info-container-unique {
+            background-color: #333;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 0;
+            color: white;
+        }
+
+        .combo-title-unique {
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .info-list {
+            list-style-type: none;
+            padding: 0;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .info-list li {
+            background-color: #444;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .product-description-unique {
+            font-size: 14px;
+            color: #ccc;
+            margin-top: 5px;
+            margin: 4px;
+        }
+
+        .checkmark-unique {
+            color: #28a745;
+            font-size: 20px;
+            position: absolute;
+            top: 5px;
+            right: 10px;
+        }
+
+        #buyButtonUnique {
+            padding: 15px 30px;
+            background-color: #218838;
+            color: white;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 50px;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 20px;
+            animation: glow-unique 1.5s infinite;
+        }
+
+        #buyButtonUnique:hover {
+            background-color: #218838;
+        }
+
+        @keyframes glow-unique {
+            0% {
+                box-shadow: 0 0 3px #28a745, 0 0 5px #28a745, 0 0 8px #28a745;
+            }
+            50% {
+                box-shadow: 0 0 5px #28a745, 0 0 10px #28a745, 0 0 15px #28a745;
+            }
+            100% {
+                box-shadow: 0 0 3px #28a745, 0 0 5px #28a745, 0 0 8px #28a745;
+            }
+        }
+
+        .offer-message-unique {
+            margin-top: 15px;
+            color: #ffcc00;
+            font-size: 13px;
+        }
+
+        .bold-unique {
+            font-weight: bold;
+        }
+
+        .checkmark-box-unique {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid white;
+            border-radius: 8px;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .checkmark-left-unique {
+            color: #28a745;
+            font-size: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .discount-container-unique {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .discount-rectangle-unique {
+            position: absolute;
+            right: 0;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 2px solid white;
+            width: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            border-radius: 10px;
+        }
+
+        .discount-text-unique {
+            color: white;
+            font-size: 17px;
+            margin-left: 10px;
+            z-index: 1;
+        }
+
+        .total-value {
+            color: #28a745;
+            margin-left: 10px;
+            font-weight: bold;
+        }
+
+        .original-price-unique {
+            margin-top: 10px;
+            margin-bottom: 15px;
+            color: #ccc;
+            text-align: right;
+        }
+
+        .original-price-value-unique {
+            color: red;
+            text-decoration: line-through;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -202,6 +370,44 @@
                     <div class="pause-icon"></div>
                     <div class="triangle"></div>
                 </button>
+            </div>
+        </div>
+
+        <div class="container-prod-unique">
+            <div class="container-image-unique">
+                <img src="capaproduto.jpg" alt="Capa do Produto" class="product-image-unique">
+            </div>
+            <div class="product-info-container-unique">
+                <div class="combo-title-unique">Combo Exclusivo - Método Cabelo DNA</div>
+                <ul class="info-list">
+                    <li>
+                        Método Cabelo DNA: <strong>R$ 20,00</strong>
+                        <span class="checkmark-unique" id="checkmarkMetodo">✔</span>
+                        <p class="product-description-unique">Descubra o segredo para ter cabelos saudáveis e deslumbrantes com nosso método exclusivo.</p>
+                    </li>
+                    <li>
+                        Tintas Menos Agressivas: <strong>R$ 15,00</strong>
+                        <span class="checkmark-unique" id="checkmarkTintas">✔</span>
+                        <p class="product-description-unique">Aprenda as melhores tintas para manter a qualidade do cabelo sem abrir mão da cor.</p>
+                    </li>
+                    <li>
+                        Cortes Mais Versateis: <strong>R$ 10,00</strong>
+                        <span class="checkmark-unique" id="checkmarkCortes">✔</span>
+                        <p class="product-description-unique">Encontre o corte perfeito que valorize seus traços e combine com seu estilo.</p>
+                    </li>
+                </ul>
+                <div id="originalPrice" class="original-price-unique">Preço Original: <strong class="original-price-value-unique">R$ 45,00</strong></div>
+                <div class="discount-container-unique">
+                    <div class="checkmark-box-unique" id="checkboxCombo">
+                        <div class="checkmark-left-unique" id="checkmarkBox">✔</div>
+                    </div>
+                    <span class="discount-text-unique">Sim eu quero desconto</span>
+                    <div class="discount-rectangle-unique">
+                        Total: <span id="totalValue" class="total-value">R$ 29,99</span>
+                    </div>
+                </div>
+                <button id="buyButtonUnique" class="bold-unique" onclick="window.location.href='https://google.com/'">Garantir o meu Pacote Completo</button>
+                <div id="offerMessage" class="offer-message-unique">Oferta válida por tempo limitado. Aproveite!</div>
             </div>
         </div>
 
@@ -232,9 +438,64 @@
     </div>
 
     <script>
+        // JavaScript para o botão de desconto e atualização do botão
+        const checkboxCombo = document.getElementById('checkboxCombo');
+        const checkmarkMetodo = document.getElementById('checkmarkMetodo');
+        const checkmarkTintas = document.getElementById('checkmarkTintas');
+        const checkmarkCortes = document.getElementById('checkmarkCortes');
+        const discountText = document.querySelector('.discount-text-unique');
+        const totalValue = document.getElementById('totalValue');
+        const originalPrice = document.getElementById('originalPrice');
+        const buyButton = document.getElementById('buyButtonUnique');
+        const offerMessage = document.getElementById('offerMessage');
+        const checkmarkBox = document.getElementById('checkmarkBox');
+
+        let showMarks = true;
+
+        window.onload = function() {
+            checkmarkMetodo.style.display = 'block';
+            checkmarkTintas.style.display = 'block';
+            checkmarkCortes.style.display = 'block';
+            checkmarkBox.style.display = 'flex';
+
+            totalValue.textContent = 'R$ 29,99';
+            originalPrice.style.display = 'block';
+        };
+
+        checkboxCombo.addEventListener('click', () => {
+            showMarks = !showMarks;
+
+            checkmarkMetodo.style.display = 'block';
+
+            if (showMarks) {
+                checkmarkTintas.style.display = 'block';
+                checkmarkCortes.style.display = 'block';
+                checkmarkBox.style.display = 'flex';
+                discountText.textContent = 'Sim eu quero desconto';
+                totalValue.textContent = 'R$ 29,99';
+                originalPrice.style.display = 'block';
+                buyButton.textContent = 'Garantir o meu Pacote Completo';
+                buyButton.setAttribute('onclick', "window.location.href='https://google.com/'");
+                offerMessage.style.display = 'block';
+            } else {
+                checkmarkTintas.style.display = 'none';
+                checkmarkCortes.style.display = 'none';
+                checkmarkBox.style.display = 'none';
+                discountText.textContent = 'Remover desconto';
+                totalValue.textContent = 'R$ 20,00';
+                originalPrice.style.display = 'none';
+                buyButton.textContent = 'Garantir o meu Método Cabelo DNA';
+                buyButton.setAttribute('onclick', "window.location.href='https://youtube.com/'");
+                offerMessage.style.display = 'none';
+            }
+        });
+    </script>
+
+    <script>
         const playButton = document.getElementById('playButton');
         const video = document.getElementById('backgroundVideo');
         const thumbnail = document.querySelector('.thumbnail');
+        const containerProdUnique = document.querySelector('.container-prod-unique'); // Adicione esta linha
 
         playButton.addEventListener('click', () => {
             if (video.paused) {
@@ -246,6 +507,13 @@
                 setTimeout(() => {
                     playButton.style.display = 'none';
                 }, 300);
+
+                // Adicione este setTimeout para mostrar o container após 30 segundos
+                setTimeout(() => {
+                    if (!video.paused) { // Verifique se o vídeo ainda está tocando
+                        containerProdUnique.style.display = 'block'; // Remova display: none
+                    }
+                }, 30000); // 30000 milissegundos = 30 segundos
             } else {
                 video.pause();
                 thumbnail.style.opacity = '1';
