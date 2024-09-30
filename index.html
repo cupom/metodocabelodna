@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Método Cabelo DNA!</title>
+    <title>Fórmula Cabelo Vital</title>
+    <!-- Ícone padrão do site (Favicon) -->
+    <link rel="icon" href="favicon.png" type="image/png">
+
+    <!-- Ícones para dispositivos móveis -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,8 +31,8 @@
         }
 
         h1 {
-            margin-top: -15px;
-            font-size: 70px;
+            margin-top: 7px;
+            font-size: 60px;
             color: #fff;
             margin-bottom: 20px;
             font-family: 'Arial Black', sans-serif;
@@ -42,103 +53,51 @@
 
             .break {
                 display: block;
-                margin-bottom: -10px;
+                margin-bottom: -7px;
             }
         }
 
-        .rectangle-container {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            max-width: 100%;
-            margin-bottom: 20px;
-        }
-
-        .rectangle {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: transparent;
-        }
-
-        .background-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 1s ease;
-        }
-
-        .thumbnail {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('capa.jpg') no-repeat center center;
-            background-size: cover;
-            opacity: 1;
-            transition: opacity 1s ease;
-        }
-
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            border: none;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            animation: oscillate 1.3s ease-in-out infinite; /* Animação de oscilação mais suave */
-        }
-
-        @keyframes oscillate {
-            0% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.05); } /* Reduzir a escala */
-            100% { transform: translate(-50%, -50%) scale(1); }
-        }
-
-        .triangle {
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 14px 0 14px 20px; /* Triângulo para o play */
-            border-color: transparent transparent transparent white;
-            position: relative; /* Mantém o triângulo em posição fixa */
-        }
-
-        .play-button.playing .triangle {
-            display: none; /* Esconde o triângulo quando o botão está na classe 'playing' */
-        }
-
-        .play-button.playing .pause-icon {
-            display: block;
-            position: absolute;
-            width: 7px;
+        .payment-method {
+            background: #121212;
+            border: 1px solid #121212;
+            border-radius: 8px;
             height: 30px;
-            background-color: white;
-            top: 50%;
-            transform: translateY(-50%);
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 15px;
         }
 
-        .play-button.playing .pause-icon:nth-of-type(1) {
-            left: calc(50% - 11px);
+        .payment-icons {
+            display: flex;
+            justify-content: center; /* Centraliza os ícones horizontalmente */
+            gap: 50px; /* Define um espaçamento consistente entre os ícones */
+            position: relative;
+            width: 100%; /* Garante que o contêiner ocupe 100% do espaço disponível */
+            max-width: 400px; /* Define um limite máximo para evitar que os ícones se espalhem demais */
         }
 
-        .play-button.playing .pause-icon:nth-of-type(2) {
-            left: calc(50% + 5px);
+        .payment-icon {
+            font-size: 20px;
+            color: #b04bcd;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .tooltip {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            color: #000;
+            font-size: 14px;
+            white-space: nowrap;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .footer-info {
@@ -183,65 +142,76 @@
             color: #aaaaaa;
         }
 
+        .selo-kiwify {
+            background-color: #1a1a1a; /* cor de fundo do selo */
+            border-radius: 10px 10px 0 0; /* bordas arredondadas */
+            padding: 10px;
+            width: 160px; /* ajuste a largura conforme necessário */
+            position: fixed; /* ou absolute, dependendo de onde você quer */
+            bottom: 0px; /* ajuste a posição inferior */
+            left: 10px; /* ajuste a posição esquerda */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* sombra */
+            z-index: 1000; /* garantir que o selo fique acima de outros elementos */
+            transition: height 0.3s ease; /* transição suave na altura */
+            cursor: pointer; /* cursor em forma de ponteiro */
+            text-align: left; /* Alinhamento à esquerda */
+        }
+
+        .conteudo-selo {
+            display: flex;
+            align-items: center;
+        }
+
+        .icone-cadeado {
+            font-size: 35px; /* ajuste o tamanho do ícone */
+            margin-right: 10px; /* espaço à direita do ícone */
+            color: #707070; /* cor do ícone */
+        }
+
+        .texto-selo {
+            color: #c0c0c0; /* cor do texto */
+        }
+
+        .titulo {
+            font-weight: bold; /* texto em negrito */
+        }
+
+        .subtitulo {
+            font-size: 0.8em; /* tamanho menor para o subtítulo */
+            color: #919191; /* cor mais suave */
+        }
+
+        /* Estilo da mensagem que aparece ao clicar */
+        .mensagem {
+            display: none; /* esconde a mensagem inicialmente */
+            margin-top: 15px; /* espaço acima da mensagem */
+            color: #ffffff; /* cor da mensagem */
+        }
+
+        .mensagem span {
+            font-size: 13px;
+        }
+
+        /* Classe para expandir o selo */
+        .expandido {
+            height: 140px; /* altura expandida */
+        }
+
         .container-prod-unique {
             display: none;
             max-width: 900px;
             margin: 0 auto;
-            padding: px;
-        }
-
-        .container-image-unique {
-            position: relative;
-        }
-
-        .product-image-unique {
-            width: 100%;
-            height: auto;
-            border-radius: 15px;
-        }
-
-        .product-info-container-unique {
-            background-color: #333;
-            border-radius: 15px;
-            padding: 20px;
-            margin-top: 0;
-            color: white;
-        }
-
-        .combo-title-unique {
-            font-weight: bold;
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-
-        .info-list {
-            list-style-type: none;
             padding: 0;
-            font-size: 18px;
-            margin-bottom: 20px;
         }
 
-        .info-list li {
-            background-color: #444;
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 8px;
-            position: relative;
+        .bold-unique {
+            font-weight: bold;
         }
 
-        .product-description-unique {
-            font-size: 14px;
-            color: #ccc;
-            margin-top: 5px;
-            margin: 4px;
-        }
-
-        .checkmark-unique {
-            color: #28a745;
-            font-size: 15px;
-            position: absolute;
-            top: 5px;
-            right: 10px;
+        .offer-message-unique {
+            margin-top: 15px;
+            color: #ffcc00;
+            font-size: 12px;
         }
 
         #buyButtonUnique {
@@ -273,257 +243,341 @@
             }
         }
 
-        .offer-message-unique {
-            margin-top: 15px;
-            color: #ffcc00;
-            font-size: 13px;
-        }
-
-        .bold-unique {
-            font-weight: bold;
-        }
-
-        .checkmark-box-unique {
-            display: inline-block;
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 2px solid white;
-            border-radius: 8px;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
+        .containe {
             position: relative;
-        }
-
-        .checkmark-left-unique {
-            color: #28a745;
-            font-size: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-        }
-
-        .discount-container-unique {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-            position: relative;
-        }
-
-        .discount-rectangle-unique {
-            position: absolute;
-            right: 0;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 2px solid white;
-            width: 40%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin-bottom: 5px;
             border-radius: 10px;
         }
 
-        .discount-text-unique {
-            color: white;
-            font-size: 15px;
-            margin-left: 10px;
+        video {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+        }
+
+        .controls {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            transition: opacity 0.5s ease;
+            animation: pulse-animation 1.5s infinite;
+        }
+
+        .play-button.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .pulse {
+            position: absolute;
+            width: 60px;
+            height: 0px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            animation: pulse-animation 1.5s infinite;
             z-index: 1;
         }
 
-        .total-value {
-            color: #28a745;
-            margin-left: 10px;
-            font-weight: bold;
+        @keyframes pulse-animation {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
 
-        .original-price-unique {
-            margin-top: 10px;
-            margin-bottom: 15px;
-            color: #ccc;
-            text-align: right;
+        .play-button::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 20px solid white;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            transition: all 0.3s ease;
         }
 
-        .original-price-value-unique {
-            color: red;
-            text-decoration: line-through;
-            font-weight: bold;
+        .play-button.playing::before {
+            content: '';
+            width: 7px;
+            height: 24px;
+            background-color: white;
+            border-left: none;
+            border-top: none;
+            border-bottom: none;
+            transition: all 0.3s ease;
+            left: 18px;
+        }
+
+        .play-button.playing::after {
+            content: '';
+            position: absolute;
+            width: 7px;
+            height: 24px;
+            background-color: white;
+            right: 18px;
+            transition: all 0.3s ease;
+        }
+
+        /* Camada escurecida, começa invisível */
+        .dark-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            opacity: 0;
+            z-index: 1; /* Coloca atrás do texto */
+            pointer-events: none; /* Permite cliques através da camada */
+            transition: opacity 1s ease;
+        }
+
+        /* Estilo para a palavra "fim" */
+        .end-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20px;
+            color: #fff;
+            opacity: 0;
+            transition: opacity 1s ease;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .end-message span {
+            font-size: 30px;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>O SEGREDO PARA<span class="break"> </span>UM <span class="highlight">CABELO IMPECAVEL!</span></h1>
-        
-        <div class="rectangle-container">
-            <div class="rectangle">
-                <div class="thumbnail"></div>
-                <video id="backgroundVideo" muted loop playsinline class="background-video" poster="capa.jpg">
-                    <source src="video1.mp4" type="video/mp4">
-                    Seu navegador não suporta o vídeo.
-                </video>
+        <h1>O SEGREDO PARA<span class="break"> </span><span class="highlight">RESSUSCITAR</span> OS <span class="highlight">FIOS!</span></h1>
 
-                <button id="playButton" class="play-button">
-                    <div class="pause-icon"></div>
-                    <div class="pause-icon"></div>
-                    <div class="triangle"></div>
-                </button>
+        <div class="containe">
+            <video id="video" poster="capa.jpg">
+                <source src="video1.mp4" type="video/mp4">
+                Seu navegador não suporta a tag de vídeo.
+            </video>
+
+            <div class="controls">
+                <div class="pulse"></div>
+                <button class="play-button" id="playPauseBtn" onclick="togglePlayPause()"></button>
+            </div>
+
+            <div class="end-message" id="endMessage"><span>☺</span><br>Garanta seu acesso antes que esgote!</div>
+            <div class="dark-overlay" id="darkOverlay"></div> <!-- Camada escurecida -->
+        </div>
+
+        <div class="payment-method">
+            <div class="payment-icons">
+                <div class="payment-icon" id="icon-cartao">
+                    <i class="fas fa-credit-card"></i>
+                    <div class="tooltip">Cartão</div>
+                </div>
+                <div class="payment-icon" id="icon-boleto">
+                    <i class="fas fa-file-invoice"></i>
+                    <div class="tooltip">Boleto</div>
+                </div>
+                <div class="payment-icon" id="icon-pix">
+                    <i class="fas fa-solid fa-money-bill"></i>
+                    <div class="tooltip">Pix</div>
+                </div>
             </div>
         </div>
 
         <div class="container-prod-unique">
-            <div class="container-image-unique">
-                <img src="capaproduto.jpg" alt="Capa do Produto" class="product-image-unique">
-            </div>
-            <div class="product-info-container-unique">
-                <div class="combo-title-unique">Combo Exclusivo - Método Cabelo DNA</div>
-                <ul class="info-list">
-                    <li>
-                        Método Cabelo DNA: <strong>R$ 20,00</strong>
-                        <span class="checkmark-unique" id="checkmarkMetodo">✔</span>
-                        <p class="product-description-unique">Guia transformador, abordando os principais desafios que mulheres enfrentam com seus cabelos.</p>
-                    </li>
-                    <li>
-                        Mechas Orgânicas: <strong>R$ 15,00</strong>
-                        <span class="checkmark-unique" id="checkmarkTintas">✔</span>
-                        <p class="product-description-unique">Guia prático com receitas caseiras que revitalizam e nutrem o cabelo com ingredientes naturais.</p>
-                    </li>
-                    <li>
-                        Match Capilar: <strong>R$ 10,00</strong>
-                        <span class="checkmark-unique" id="checkmarkCortes">✔</span>
-                        <p class="product-description-unique">Guia complementar com as melhores sugestões de cortes e penteados para cada tipo de formato de rosto.</p>
-                    </li>
-                </ul>
-                <div id="originalPrice" class="original-price-unique">Preço Original: <strong class="original-price-value-unique">R$ 45,00</strong></div>
-                <div class="discount-container-unique">
-                    <div class="checkmark-box-unique" id="checkboxCombo">
-                        <div class="checkmark-left-unique" id="checkmarkBox">✔</div>
-                    </div>
-                    <span class="discount-text-unique">Quero desconto</span>
-                    <div class="discount-rectangle-unique">
-                        Total: <span id="totalValue" class="total-value">R$ 29,99</span>
-                    </div>
-                </div>
-                <button id="buyButtonUnique" class="bold-unique" onclick="window.location.href='https://google.com/'">Garantir o meu Pacote Completo</button>
-                <div id="offerMessage" class="offer-message-unique">Oferta válida por tempo limitado. Aproveite!</div>
-            </div>
+            <button id="buyButtonUnique" class="bold-unique" onclick="window.location.href='https://pay.kiwify.com.br/GifLnah'">Garantir meu acesso agora</button>
+            <div class="offer-message-unique">Oferta válida por tempo limitado. Aproveite!</div>
         </div>
 
         <div class="info-container">
-            <div class="cont2">Alguns dos temas abordados</div>
+            <div class="cont2">Os módulos abordados</div>
             <div class="bloco">
-                <p><b>Queda e afinamento dos fios:</b> A perda de volume e o afinamento dos fios podem devastar sua confiança. Ver seu cabelo perder brilho e força, e perceber a queda constante, é angustiante. No <strong>Método Cabelo DNA</strong>, vamos além das promessas comuns e trazemos soluções práticas para restaurar a vitalidade dos seus fios e resgatar sua autoestima.</p>
+                <p><b>Recuperação e Restauração Capilar:</b> Ver seus fios afinando e perdendo vida é angustiante. Cada novo dia parece um retrocesso, e a autoestima vai junto. No <strong>Fórmula Cabelo Vital</strong>, você vai descobrir como restaurar a força e vitalidade do seu cabelo, trazendo de volta a confiança que você merece.</p>
             </div>
 
             <div class="bloco">
-                <p><b>Frizz e falta de controle:</b> Olhar no espelho e ver o frizz tomar conta dos seus cabelos é frustrante. A sensação de descontrole pode acabar com o seu dia. No <strong>Método Cabelo DNA</strong>, você descobrirá técnicas simples para domar os fios rebeldes e ter cabelos disciplinados e radiantes todos os dias.</p>
+                <p><b>Fortalecimento e Prevenção da Quebra:</b> Após restaurar seus fios, o medo de pentear o cabelo e vê-lo quebradiço continua te preocupando. No <strong>Fórmula Cabelo Vital</strong>, você aprenderá a fortalecer seus fios de maneira duradoura, garantindo que eles permaneçam saudáveis e livres da fragilidade.</p>
             </div>
 
             <div class="bloco">
-                <p><b>Danos por tratamentos químicos:</b> A confiança em tratamentos químicos e ferramentas de calor pode levar a fios quebradiços e sem vida. Esse arrependimento é devastador. No <strong>Método Cabelo DNA</strong>, vamos mostrar como recuperar a vitalidade dos seus cabelos e evitar danos futuros, sem sacrificar sua saúde em busca de beleza.</p>
-            </div>
-
-            <div class="bloco">
-                <p><b>Corte ou estilo que não favorece:</b> Sair do salão insatisfeita com um corte que não valoriza seu rosto pode afetar sua autoconfiança. No <strong>Método Cabelo DNA</strong>, vamos ensinar como escolher o estilo que realça sua beleza, para que você sempre se sinta linda e conectada a si mesma.</p>
+                <p><b>Manutenção e Cuidados de Longo Prazo:</b> Com seus fios fortalecidos, o desafio é manter essa saúde e evitar que o afinamento volte. O <strong>Fórmula Cabelo Vital</strong> vai te ensinar um plano prático de cuidados contínuos, para que seu cabelo se mantenha forte e bonito no longo prazo, sem preocupações constantes.</p>
             </div>
             <div class="cont3">Mais informações no vídeo acima...</div>
         </div>
 
         <div class="footer-info">
             <p><strong>Garantia de Satisfação de 60 Dias</strong></p>
-            <p>© 2013 — 2024 Método Cabelo DNA</p>
+            <p>© 2023 — 2024 Método Cabelo DNA</p>
         </div>
-    </div>
+
+        <div class="selo-kiwify" id="seloKiwify">
+            <div class="conteudo-selo">
+                <i class="fas fa-lock icone-cadeado"></i>
+                <div class="texto-selo">
+                    <span class="titulo">Kiwify</span><br>
+                    <span class="subtitulo">Site Confiável</span>
+                </div>
+            </div>
+            <div class="mensagem" id="mensagemKiwify">
+                <span>
+                    <strong>Kiwify varejista confiável.<br></strong>
+                    Se você não estiver satisfeito com sua compra, devolvemos seu dinheiro. Sua satisfação é garantida!
+                </span>
+            </div>
+        </div>
+
+        <script>
+            var video = document.getElementById('video');
+            var playPauseBtn = document.getElementById('playPauseBtn');
+            var endMessage = document.getElementById('endMessage');
+            var darkOverlay = document.getElementById('darkOverlay');
+            var containerProdUnique = document.querySelector('.container-prod-unique');
+    
+            // Função para verificar e mostrar o botão de compra se o vídeo já passou dos 30 segundos
+            function checkVideoProgress() {
+                if (localStorage.getItem('videoWatched') === 'true') {
+                    containerProdUnique.style.display = 'block';
+                }
+            }
+    
+            // Função para salvar no LocalStorage
+            function saveVideoProgress() {
+                localStorage.setItem('videoWatched', 'true');
+            }
+    
+            // Função para resetar o progresso do vídeo (para testes)
+            function resetVideoProgress() {
+                localStorage.removeItem('videoWatched');
+                containerProdUnique.style.display = 'none';
+                alert('Progresso do vídeo resetado. Assista novamente para ver o botão de compra aparecer.');
+            }
+    
+            // Verifica o progresso ao carregar a página
+            window.onload = checkVideoProgress;
+    
+            function togglePlayPause() {
+                if (video.paused) {
+                    video.play();
+                    playPauseBtn.classList.add('playing');
+                    setTimeout(() => {
+                        playPauseBtn.classList.add('hidden');
+                    }, 300);
+                } else {
+                    video.pause();
+                    playPauseBtn.classList.remove('playing');
+                    playPauseBtn.classList.remove('hidden');
+                }
+            }
+    
+            video.addEventListener('timeupdate', function() {
+                if (video.currentTime >= 30) {
+                    containerProdUnique.style.display = 'block';
+                    saveVideoProgress(); // Salva no LocalStorage
+                }
+            });
+    
+            video.addEventListener('ended', function() {
+                endMessage.style.opacity = 1;
+                darkOverlay.style.opacity = 1;
+            });
+        </script>
 
     <script>
-        // JavaScript para o botão de desconto e atualização do botão
-        const checkboxCombo = document.getElementById('checkboxCombo');
-        const checkmarkMetodo = document.getElementById('checkmarkMetodo');
-        const checkmarkTintas = document.getElementById('checkmarkTintas');
-        const checkmarkCortes = document.getElementById('checkmarkCortes');
-        const discountText = document.querySelector('.discount-text-unique');
-        const totalValue = document.getElementById('totalValue');
-        const originalPrice = document.getElementById('originalPrice');
-        const buyButton = document.getElementById('buyButtonUnique');
-        const offerMessage = document.getElementById('offerMessage');
-        const checkmarkBox = document.getElementById('checkmarkBox');
+        // Seleciona o selo e a mensagem
+        const seloKiwify = document.getElementById('seloKiwify');
+        const mensagemKiwify = document.getElementById('mensagemKiwify');
 
-        let showMarks = true;
+        let timeoutId; // Variável para armazenar o ID do timeout
 
-        window.onload = function() {
-            checkmarkMetodo.style.display = 'block';
-            checkmarkTintas.style.display = 'block';
-            checkmarkCortes.style.display = 'block';
-            checkmarkBox.style.display = 'flex';
+        // Função para fechar o selo após 10 segundos
+        function fecharSelo() {
+            seloKiwify.classList.remove('expandido'); // Remove a classe 'expandido'
+            mensagemKiwify.style.display = 'none'; // Esconde a mensagem
+        }
 
-            totalValue.textContent = 'R$ 29,99';
-            originalPrice.style.display = 'block';
-        };
+        // Adiciona um evento de clique ao selo
+        seloKiwify.addEventListener('click', () => {
+            // Alterna a classe 'expandido'
+            seloKiwify.classList.toggle('expandido');
 
-        checkboxCombo.addEventListener('click', () => {
-            showMarks = !showMarks;
-
-            checkmarkMetodo.style.display = 'block';
-
-            if (showMarks) {
-                checkmarkTintas.style.display = 'block';
-                checkmarkCortes.style.display = 'block';
-                checkmarkBox.style.display = 'flex';
-                discountText.textContent = 'Quero Desconto';
-                totalValue.textContent = 'R$ 29,99';
-                originalPrice.style.display = 'block';
-                buyButton.textContent = 'Garantir o meu Pacote Completo';
-                buyButton.setAttribute('onclick', "window.location.href='https://google.com/'");
-                offerMessage.style.display = 'block';
+            // Alterna a visibilidade da mensagem
+            if (mensagemKiwify.style.display === 'block') {
+                mensagemKiwify.style.display = 'none'; // Esconde a mensagem
+                clearTimeout(timeoutId); // Limpa o timeout se o selo for fechado manualmente
             } else {
-                checkmarkTintas.style.display = 'none';
-                checkmarkCortes.style.display = 'none';
-                checkmarkBox.style.display = 'none';
-                discountText.textContent = 'Desconto Removido';
-                totalValue.textContent = 'R$ 20,00';
-                originalPrice.style.display = 'none';
-                buyButton.textContent = 'Garantir meu Método Cabelo DNA';
-                buyButton.setAttribute('onclick', "window.location.href='https://youtube.com/'");
-                offerMessage.style.display = 'none';
+                mensagemKiwify.style.display = 'block'; // Mostra a mensagem
+
+                // Define um timeout para fechar o selo após 10 segundos
+                timeoutId = setTimeout(fecharSelo, 7000); // 10000ms = 10s
             }
         });
     </script>
 
     <script>
-        const playButton = document.getElementById('playButton');
-        const video = document.getElementById('backgroundVideo');
-        const thumbnail = document.querySelector('.thumbnail');
-        const containerProdUnique = document.querySelector('.container-prod-unique'); // Adicione esta linha
+        let tooltipTimeout;
 
-        playButton.addEventListener('click', () => {
-            if (video.paused) {
-                video.play();
-                video.style.opacity = '1';
-                thumbnail.style.opacity = '0';
-                playButton.classList.add('playing');
+        // Função para alternar a exibição do balão
+        function toggleTooltip(iconId) {
+            const icon = document.getElementById(iconId);
+            const tooltip = icon.querySelector('.tooltip');
+            const isVisible = tooltip.style.display === 'block';
 
-                setTimeout(() => {
-                    playButton.style.display = 'none';
-                }, 300);
+            // Oculta todos os balões antes de mostrar o selecionado
+            document.querySelectorAll('.tooltip').forEach(tip => tip.style.display = 'none');
 
-                // Adicione este setTimeout para mostrar o container após 30 segundos
-                setTimeout(() => {
-                    if (!video.paused) { // Verifique se o vídeo ainda está tocando
-                        containerProdUnique.style.display = 'block'; // Remova display: none
-                    }
-                }, 30000); // 30000 milissegundos = 30 segundos
+            // Exibe ou oculta o balão conforme o estado
+            if (!isVisible) {
+                tooltip.style.display = 'block';
+                
+                // Limpa o timeout anterior para evitar esconder o balão prematuramente
+                clearTimeout(tooltipTimeout);
+
+                // Inicia o timer para esconder o balão após 2 segundos
+                tooltipTimeout = setTimeout(() => {
+                    tooltip.style.display = 'none';
+                }, 2000);
             } else {
-                video.pause();
-                thumbnail.style.opacity = '1';
-                playButton.classList.remove('playing');
+                tooltip.style.display = 'none';
+                clearTimeout(tooltipTimeout);  // Cancela o esconder se o ícone for clicado novamente
             }
-        });
+        }
 
-        video.addEventListener('ended', () => {
-            playButton.style.display = 'none';
-        });
+        // Adiciona evento de clique aos ícones
+        document.getElementById('icon-cartao').addEventListener('click', () => toggleTooltip('icon-cartao'));
+        document.getElementById('icon-boleto').addEventListener('click', () => toggleTooltip('icon-boleto'));
+        document.getElementById('icon-pix').addEventListener('click', () => toggleTooltip('icon-pix'));
     </script>
+
 </body>
 </html>
